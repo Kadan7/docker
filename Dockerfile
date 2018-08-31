@@ -21,7 +21,7 @@ COPY local_policy.jar $JAVA_HOME/lib/local_policy.jar
 #RUN rm /etc/localtime && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # change dns server
-RUN echo 'nameserver 223.5.5.5' >> /etc/resolv.conf
+#RUN echo 'nameserver 223.5.5.5' >> /etc/resolv.conf
 
 
 #COPY nginx.conf /etc/nginx/nginx.conf

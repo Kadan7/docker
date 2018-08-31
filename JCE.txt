@@ -1,0 +1,7 @@
+1. Place US_export_policy.jar and local_policy.jar into the docker image with following commands:
+COPY US_export_policy.jar $JAVA_HOME/lib/US_export_policy.jar
+COPY local_policy.jar $JAVA_HOME/lib/local_policy.jar
+Remarks: jars can be downloaded here: (http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html)
+2. JCE encryption and decryption commands:
+ curl -X POST http://springconfigserver:port/encrypt -d yourpasswordinplain
+ curl -X POST http://springconfigserver:port/decrypt -d. Xxxxxxxxxxxxxxxx
