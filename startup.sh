@@ -1,1 +1,1 @@
-java -jar /root/log.jar
+java $JAVA_OPTS -jar /root/log.jar

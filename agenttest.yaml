@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: agentapp
+  labels:
+    app: agentapp
+spec:
+  containers:
+  - name: agentapp
+    image: kadanli/agentapp:v0.1
+    env:
+    - name: JAVA_OPTS
+      value: "-javaagent:/sharedFiles/AppServerAgent/javaagent.jar  -Dappdynamics.agent.tierName=middle -Dappdynamics.agent.nodeName=metricsnode"
+      name: client
+      value: "hello"
+    volumeMounts:
+    - mountPath: /sharedFiles
+      name: shared-files
+  initContainers:
+  - name: agent-repo
+    image: kadanli/agent-repo:v0.1
+    imagePullPolicy: IfNotPresent
+    command: ["cp",  "-r",  "/sharedFiles/AppServerAgent",  "/mountPath/AppServerAgent"]
+    volumeMounts:
+    - mountPath: /mountPath
+      name: shared-files
+  volumes:
+  - emptyDir: {}
+    name: shared-files
